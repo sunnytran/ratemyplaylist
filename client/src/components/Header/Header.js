@@ -6,15 +6,14 @@ class Header extends Component {
   render() {
     return (
         <div>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+            <nav class="navbar">
                 <div class="navbar-brand">
-                    <h1 class="title is-1">ratemyplaylist</h1>
+                    <p class="navbar-item" class="title">ratemyplaylist</p>
                 </div>
-
                 <div class="navbar-menu">
                     <div class="navbar-end">
                         <div class="navbar-item">
-                            <a class="subtitle" href="http://localhost:5000/login">login</a>
+                            <a class="is-primary" href="http://localhost:5000/login">login</a>
                         </div>
                     </div>
                 </div>
