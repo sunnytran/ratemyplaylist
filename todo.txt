@@ -1,0 +1,3 @@
+server side rendering and also linking directly to the server without using localhost (maybe)
+less variable hard coding in server.js
+save login? cookies
