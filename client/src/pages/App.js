@@ -2,32 +2,34 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Header from '../components/Header/Header';
+import Nav from '../components/Nav';
+import Header from '../components/Header';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+
+  isLoggedIn() {
+    return this.state.isLoggedIn;
+  }
+
+  setIsLoggedIn(isLoggedIn) {
+    this.setState({
+      isLoggedIn: isLoggedIn
+    });  
   }
 
   render() {
     return (
       <div class="container">
+        <Nav isLoggedIn={this.isLoggedIn.bind(this)} setIsLoggedIn={this.setIsLoggedIn.bind(this)}></Nav>
         <Header></Header>
-
-        <section class="hero">
-          <div class="hero-body">
-            <div class="container has-text-centered">
-              <h1 class="title is-spaced">see if your music tastes are actually unique</h1>
-              <h2 class="subtitle">call yourself quirky with 100% confidence on that next date</h2>
-              <div class="buttons is-centered">
-                <a class="control button is-primary" href="http://localhost:5000/login">log into spotify</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
       </div>
     );
   }

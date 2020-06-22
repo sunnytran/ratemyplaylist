@@ -4,6 +4,7 @@
 $my-black: #000000;
 $my-white: #ffffff;
 $green: #1dB954;
+$dark-green: #14823b;
 
 // Update Bulma's global variables
 $white: $my-black;
@@ -18,6 +19,8 @@ $primary: $green;
 $link: $green;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+
+$link-hover: $dark-green;
 
 // Update some of Bulma's component variables
 // $body-background-color: $black;

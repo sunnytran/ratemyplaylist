@@ -306,7 +306,7 @@ a {
   a strong {
     color: currentColor; }
   a:hover {
-    color: #ffffff; }
+    color: #14823b; }
 
 code {
   background-color: whitesmoke;
@@ -412,7 +412,7 @@ a.box:active {
     margin-right: calc(-0.5em - 1px); }
   .button:hover, .button.is-hovered {
     border-color: #b5b5b5;
-    color: #ffffff; }
+    color: #ff0000; }
   .button:focus, .button.is-focused {
     border-color: #3273dc;
     color: #ffffff; }
@@ -2916,7 +2916,7 @@ a.tag:hover {
     justify-content: center;
     padding: 0 0.75em; }
     .breadcrumb a:hover {
-      color: #ffffff; }
+      color: #14823b; }
   .breadcrumb li {
     align-items: center;
     display: flex; }
@@ -4272,7 +4272,7 @@ a.navbar-item,
   .pagination-next:hover,
   .pagination-link:hover {
     border-color: #b5b5b5;
-    color: #ffffff; }
+    color: #14823b; }
   .pagination-previous:focus,
   .pagination-next:focus,
   .pagination-link:focus {
@@ -7227,7 +7227,7 @@ a {
   a strong {
     color: currentColor; }
   a:hover {
-    color: #ffffff; }
+    color: #14823b; }
 
 code {
   background-color: whitesmoke;
@@ -7319,7 +7319,7 @@ table th {
     margin-right: calc(-0.5em - 1px); }
   .button:hover, .button.is-hovered {
     border-color: #b5b5b5;
-    color: #ffffff; }
+    color: #ff0000; }
   .button:focus, .button.is-focused {
     border-color: #3273dc;
     color: #ffffff; }
