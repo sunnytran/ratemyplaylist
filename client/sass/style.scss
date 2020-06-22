@@ -1,2 +1,43 @@
 @charset "utf-8";
+
+// Set your brand colors
+$my-black: #000000;
+$my-white: #ffffff;
+$green: #1dB954;
+
+// Update Bulma's global variables
+$white: $my-black;
+$light: $my-black;
+
+$black: $my-white;
+$dark: $my-white;
+$grey-darker: $my-white;
+$grey-dark: $my-white;
+
+$primary: $green;
+$link: $green;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+// $body-background-color: $black;
+// $hero-background-color: $black;
+
+// $title-color: $white;
+// $subtitle-color: $white;
+
+// $control-border-width: 2px;
+// $input-border-color: transparent;
+// $input-shadow: none;
+
+// Import only what you need from Bulma
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
