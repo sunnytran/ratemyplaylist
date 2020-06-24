@@ -3,3 +3,5 @@ less variable hard coding in server.js
 save login? cookies
 login/logout functionality
 primary color hover
+get rid of access token in url
+logout

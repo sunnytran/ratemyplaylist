@@ -6,8 +6,8 @@ require('dotenv').config()
 
 let app = express()
 
-let redirect_uri = 
-  process.env.REDIRECT_URI || 
+let redirect_uri =
+  process.env.REDIRECT_URI ||
   'http://localhost:5000/callback'
 
 app.get('/login', function(req, res) {
@@ -25,7 +25,7 @@ app.get('/callback', function(req, res) {
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     form: {
-      code: code, 
+      code: code,
       redirect_uri,
       grant_type: 'authorization_code'
     },

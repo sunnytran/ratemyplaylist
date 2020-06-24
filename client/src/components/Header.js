@@ -2,22 +2,54 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
-  
+
+  constructor(props) {
+    super(props);
+
+    this.loginContent = this.loginContent.bind(this);
+    this.loggedInContent = this.loggedInContent.bind(this);
+  }
+
+  loginContent() {
+    return (
+      <div>
+        <h1 class="title is-spaced">see if your music tastes are actually unique</h1>
+        <h2 class="subtitle">call yourself quirky with 100% confidence</h2>
+        <div class="buttons is-centered">
+            <a class="control button is-primary" href="http://localhost:5000/login">log into spotify</a>
+        </div>
+      </div>
+    );
+  }
+
+  loggedInContent() {
+    return (
+      <div>
+        <h1 class="title is-spaced">Welcome</h1>
+        <h2 class="subtitle">Welcome</h2>
+        <div class="buttons is-centered">
+            <a class="control button is-primary" href="http://localhost:5000/login">Welcome</a>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
-        <div>
-            <section class="hero">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                <h1 class="title is-spaced">see if your music tastes are actually unique</h1>
-                <h2 class="subtitle">call yourself quirky with 100% confidence on that next date</h2>
-                <div class="buttons is-centered">
-                    <a class="control button is-primary" href="http://localhost:5000/login">log into spotify</a>
-                </div>
-                </div>
-            </div>
-            </section>
-        </div>
+      <div>
+        <section class="hero">
+          <div class="hero-body">
+              <div class="container has-text-centered">
+                {
+                  this.props.getLoginValue() ?
+                    this.loggedInContent() :
+                    this.loginContent()
+                }
+
+              </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }
