@@ -4,6 +4,7 @@ import './App.css';
 
 import Nav from '../components/Nav';
 import Header from '../components/Header';
+import PlaylistTable from '../components/PlaylistTable';
 
 import queryString from 'query-string';
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -15,7 +16,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      username: '',
+      playlists: []
     }
 
     this.getIsLoggedIn = this.getIsLoggedIn.bind(this);
@@ -27,9 +30,9 @@ class App extends Component {
   }
 
   setIsLoggedIn(x) {
-    this.state = {
+    this.setState({
       isLoggedIn: x
-    }
+    });
   }
 
   componentWillMount() {
@@ -40,7 +43,19 @@ class App extends Component {
       spotifyApi.setAccessToken(accessToken);
 
       this.setIsLoggedIn(true);
+      spotifyApi.getMe()    
+        .then((response) => {
+          this.setState({
+            username: response.display_name
+          })
+        })
       
+      spotifyApi.getUserPlaylists()
+        .then((response) => {
+          this.setState({
+            playlists: response.items
+          })
+        })
     } else {
       this.setIsLoggedIn(false);
     }
@@ -50,7 +65,12 @@ class App extends Component {
     return (
       <div class="container">
         <Nav getLoginValue={this.getIsLoggedIn}></Nav>
-        <Header getLoginValue={this.getIsLoggedIn}></Header>
+        <Header getLoginValue={this.getIsLoggedIn} username={this.state.username}></Header>
+        {
+          this.state.isLoggedIn ? 
+            <PlaylistTable playlists={this.state.playlists}/>
+            : null
+        }
       </div>
     );
   }

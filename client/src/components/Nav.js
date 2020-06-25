@@ -5,6 +5,24 @@ class Nav extends Component {
 
   constructor(props) {
     super(props);
+
+    this.loginContent = this.loginContent.bind(this);
+  }
+
+  loginContent() {
+    return (
+      <div class="navbar-item">
+        <a class="is-primary" href="http://localhost:5000/login">login</a>
+      </div>
+    );
+  }
+
+  logoutContent() {
+    return (
+      <div class="navbar-item">
+        <a class="is-primary" href="http://localhost:5000/login">logout</a>
+      </div>
+    );
   }
 
   render() {
@@ -16,13 +34,11 @@ class Nav extends Component {
           </div>
           <div class="navbar-menu">
             <div class="navbar-end">
-              <div class="navbar-item">
-                {
-                  this.props.getLoginValue() ?
-                    <a class="is-primary" href="http://localhost:5000/login">logout</a> :
-                    <a class="is-primary" href="http://localhost:5000/login">login</a>
-                }
-              </div>
+              {
+                this.props.getLoginValue() ?
+                  this.logoutContent() :
+                  this.loginContent()
+              }
             </div>
           </div>
         </nav>

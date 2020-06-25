@@ -25,11 +25,8 @@ class Header extends Component {
   loggedInContent() {
     return (
       <div>
-        <h1 class="title is-spaced">Welcome</h1>
-        <h2 class="subtitle">Welcome</h2>
-        <div class="buttons is-centered">
-            <a class="control button is-primary" href="http://localhost:5000/login">Welcome</a>
-        </div>
+        <h1 class="title is-spaced">Welcome {this.props.username}</h1>
+        <h2 class="subtitle">Here are your playlists</h2>
       </div>
     );
   }
