@@ -13,7 +13,7 @@ class Header extends Component {
   loginContent() {
     return (
       <div>
-        <h1 class="title is-spaced">see if your music tastes are actually unique</h1>
+        <h1 class="title is-spaced">see if your music tastes are <span class="has-text-primary">actually</span> unique</h1>
         <h2 class="subtitle">call yourself quirky with 100% confidence</h2>
         <div class="buttons is-centered">
             <a class="control button is-primary" href="http://localhost:5000/login">log into spotify</a>
@@ -25,8 +25,8 @@ class Header extends Component {
   loggedInContent() {
     return (
       <div>
-        <h1 class="title is-spaced">Welcome {this.props.username}</h1>
-        <h2 class="subtitle">Here are your playlists</h2>
+        <h1 class="title is-spaced">Welcome <span class="has-text-primary">{this.props.username}</span></h1>
+        <h2 class="subtitle">Click on one your playlists</h2>
       </div>
     );
   }
