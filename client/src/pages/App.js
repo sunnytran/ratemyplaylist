@@ -5,6 +5,9 @@ import './App.css';
 import Nav from '../components/Nav';
 import Header from '../components/Header';
 
+import Rater from '../Rater';
+// const rater = new Rater();
+
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
@@ -24,17 +27,17 @@ class App extends Component {
     });
 
     spotifyApi.setAccessToken(localStorage.getItem("access_token"));
-
-    // spotifyApi.getPlaylist("37i9dQZF1DXaKIA8E7WcJj")
-    // .then((response) => {
-    //   console.log(response)
-    // })
   }
 
   rate(link) {
-    alert(link)
-
+    // alert(link)
     // TODO: Check validity of link
+
+    var playlistId = link.substring(link.lastIndexOf("/") + 1)
+    spotifyApi.getPlaylist(playlistId)
+    .then((response) => {
+      console.log(response)
+    })
   }
 
   render() {

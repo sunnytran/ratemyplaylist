@@ -13,6 +13,7 @@ class Header extends Component {
 
   handleClick() {
     this.props.rate(this.linkRef.current.value);
+    this.linkRef.current.value = "";
   }
 
   render() {
