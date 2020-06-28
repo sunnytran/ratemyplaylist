@@ -1,3 +1,18 @@
+
+css redo
+wider form
+localstorage refresh periodically
+check validity of spotify link
+
+
+
+
+
+
+
+
+
+
 server side rendering and also linking directly to the server without using localhost (maybe)
 less variable hard coding in server.js
 save login? cookies

@@ -6,29 +6,13 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.loginContent = this.loginContent.bind(this);
-    this.loggedInContent = this.loggedInContent.bind(this);
+    this.linkRef = React.createRef();
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  loginContent() {
-    return (
-      <div>
-        <h1 class="title is-spaced">see if your music tastes are <span class="has-text-primary">actually</span> unique</h1>
-        <h2 class="subtitle">call yourself quirky with 100% confidence</h2>
-        <div class="buttons is-centered">
-            <a class="control button is-primary" href="http://localhost:5000/login">log into spotify</a>
-        </div>
-      </div>
-    );
-  }
-
-  loggedInContent() {
-    return (
-      <div>
-        <h1 class="title is-spaced">Welcome <span class="has-text-primary">{this.props.username}</span></h1>
-        <h2 class="subtitle">Click on one your playlists</h2>
-      </div>
-    );
+  handleClick() {
+    this.props.rate(this.linkRef.current.value);
   }
 
   render() {
@@ -36,14 +20,23 @@ class Header extends Component {
       <div>
         <section class="hero">
           <div class="hero-body">
-              <div class="container has-text-centered">
-                {
-                  this.props.getLoginValue() ?
-                    this.loggedInContent() :
-                    this.loginContent()
-                }
+            <div class="container has-text-centered">
+              <div>
+                <h1 class="title is-spaced">see if your music tastes are <span class="has-text-primary">actually</span> unique</h1>
+                <h2 class="subtitle">call yourself quirky with 100% confidence</h2>
 
+                <div class="field has-addons has-addons-centered">
+                  <p class="control">
+                    <input class="input" type="text" placeholder="playlist link" ref={this.linkRef}/>
+                  </p>
+                  <p class="control">
+                    <a class="button is-primary" onClick={this.handleClick}>
+                      rate
+                    </a>
+                  </p>
+                </div>
               </div>
+            </div>
           </div>
         </section>
       </div>
