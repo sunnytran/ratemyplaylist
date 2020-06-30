@@ -8,16 +8,6 @@ require('dotenv').config()
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
-
-  res.json(customers);
-});
-
 app.get('/api/token', function(req, res) {
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -37,6 +27,29 @@ app.get('/api/token', function(req, res) {
     }
   });
 })
+
+// app.get('/api/tracks', function(req, res) {
+//   var curr = 'https://api.spotify.com/v1/playlists/' + req.query.id + '/tracks'
+
+//   while (curr) {
+//     var options = {
+//       url: curr,
+//       headers: {
+//         'Authorization': 'Bearer ' + req.query.token
+//       },
+//       json: true
+//     }
+
+//     request.get(options, function(error, response, body) {
+//       console.log(body);
+//       curr = body.tracks.next
+//     });
+
+//     break
+//   }
+
+//   console.log(curr + "<-- HELLO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+// })
 
 let port = process.env.PORT || 5000
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`)
