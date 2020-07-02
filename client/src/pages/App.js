@@ -5,8 +5,7 @@ import './App.css';
 import Nav from '../components/Nav';
 import Header from '../components/Header';
 
-import Rater from '../Rater';
-// const rater = new Rater();
+import RateResults from '../components/RateResults';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -16,13 +15,19 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.rate = this.rate.bind(this);
-
     this.state = {
       playlistId: '',
       currentLink: '',
-      tracks: []
+      tracks: [],
+      isRating: false
     }
+
+    this.rate = this.rate.bind(this)
+    this.setIsRating = this.setIsRating.bind(this)
+  }
+
+  setIsRating(isRating) {
+    this.setState({ isRating: isRating })
   }
 
   componentWillMount() {
@@ -51,7 +56,7 @@ class App extends Component {
       currentLink: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks'
     }, () => {
       const fetchTracks = async() => {
-        while (this.state.currentLink != '') {
+        while (this.state.currentLink !== '') {
           await fetch(this.state.currentLink, { 
             method: 'get', 
             headers: new Headers({
@@ -60,42 +65,43 @@ class App extends Component {
           })
           .then(res => res.json())
           .then((res) => {
-            if (!res.tracks && res.next)
-              this.setState({ currentLink: res.next })
-            else if (res.tracks && res.tracks.next)
-              this.setState({ currentLink: res.tracks.next })
-            else
-              this.setState({ currentLink: '' })
-
-            if (res.tracks) {
+            if (res.tracks && res.tracks.items) {
               var tracks = res.tracks.items.map(i => i.track)
               var tmp = this.state.tracks
               tmp.push.apply(tmp, tracks)
               
               this.setState({ tracks: tmp })
-              console.log("A")
-            } else if (!res.tracks && res.next) {
+
+            } else if (!res.tracks && res.items) {
               var tracks = res.items.map(i => i.track)
               var tmp = this.state.tracks
               tmp.push.apply(tmp, tracks)
               
               this.setState({ tracks: tmp })
-              console.log("B")
             }
+
+            if (!res.tracks && res.next)
+            this.setState({ currentLink: res.next })
+            else if (res.tracks && res.tracks.next)
+              this.setState({ currentLink: res.tracks.next })
+            else
+              this.setState({ currentLink: '' }, this.setIsRating(true))
           })
         }
       }
       fetchTracks()
     })
-    console.log("C")
-    // console.log(this.state.tracks)
   }
 
   render() {
     return (
       <div class="container">
         <Nav></Nav>
-        <Header rate={this.rate}></Header>
+        {
+          this.state.isRating ?
+            <RateResults tracks={this.state.tracks}/> :
+            <Header prepareProps={this.rate} />
+        }
       </div>
     );
   }

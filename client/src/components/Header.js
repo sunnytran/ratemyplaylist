@@ -7,12 +7,11 @@ class Header extends Component {
     super(props);
 
     this.linkRef = React.createRef();
-
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.props.rate(this.linkRef.current.value);
+    this.props.prepareProps(this.linkRef.current.value)
     this.linkRef.current.value = "";
   }
 
